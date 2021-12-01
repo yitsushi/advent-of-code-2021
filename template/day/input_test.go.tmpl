@@ -1,0 +1,25 @@
+package day{{printf "%02d" .Day}}_test
+
+import (
+	"bytes"
+	"io/ioutil"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"{{.Root}}/days/day{{printf "%02d" .Day}}"
+	test "github.com/yitsushi/go-aoc/testing"
+)
+
+func TestSolver_SetInput(t *testing.T) {
+	t.Skip()
+
+	example, err := test.LoadFixture("example")
+	if !assert.NoError(t, err) {
+		return
+	}
+
+	day := day{{printf "%02d" .Day}}.Solver{}
+	err = day.SetInput(ioutil.NopCloser(bytes.NewReader(example)))
+
+	assert.NoError(t, err)
+}
