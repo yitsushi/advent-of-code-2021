@@ -51,3 +51,17 @@ func TestSolver_Part1_real(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, "", out)
 }
+
+func TestSolver_Part1_inputError(t *testing.T) {
+	t.Skip()
+
+	example, err := test.LoadFixture("input-error")
+	if !assert.NoError(t, err) {
+		return
+	}
+
+	day := day{{printf "%02d" .Day}}.Solver{}
+
+	err = day.SetInput(ioutil.NopCloser(bytes.NewReader(example)))
+	assert.Error(t, err)
+}

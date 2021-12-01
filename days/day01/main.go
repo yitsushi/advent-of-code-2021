@@ -3,7 +3,6 @@ package day01
 import (
 	"fmt"
 
-	"github.com/sirupsen/logrus"
 	"github.com/yitsushi/go-aoc/perf"
 )
 
@@ -18,7 +17,6 @@ func (d *Solver) Part1() (string, error) {
 
 	for _, value := range d.input {
 		if previous != -1 && previous < value {
-			logrus.Infof("%d -> %d", previous, value)
 			counter++
 		}
 
@@ -41,7 +39,6 @@ func (d *Solver) Part2() (string, error) {
 		value := d.input[idx] + d.input[idx+1] + d.input[idx+2]
 
 		if previous != -1 && previous < value {
-			logrus.Infof("%d -> %d", previous, value)
 			counter++
 		}
 
