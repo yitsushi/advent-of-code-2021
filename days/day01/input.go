@@ -2,9 +2,10 @@ package day01
 
 import (
 	"bufio"
-	"fmt"
 	"io"
 	"strconv"
+
+	"github.com/yitsushi/go-aoc/puzzle"
 )
 
 const (
@@ -24,14 +25,14 @@ func (d *Solver) SetInput(input io.Reader) error {
 	for scanner.Scan() {
 		value, err := strconv.ParseInt(scanner.Text(), base10, intBitSize)
 		if err != nil {
-			return fmt.Errorf("failed to parse input: %w", err)
+			return puzzle.InputParseError{Message: scanner.Err().Error()}
 		}
 
 		d.input = append(d.input, value)
 	}
 
 	if scanner.Err() != nil {
-		return fmt.Errorf("failed to parse input: %w", scanner.Err())
+		return puzzle.InputParseError{Message: scanner.Err().Error()}
 	}
 
 	return nil

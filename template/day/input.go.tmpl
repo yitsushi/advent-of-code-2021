@@ -3,6 +3,8 @@ package day{{printf "%02d" .Day}}
 import (
 	"bufio"
 	"io"
+
+	"github.com/yitsushi/go-aoc/puzzle"
 )
 
 // Solver is the main solver.
@@ -18,5 +20,9 @@ func (d *Solver) SetInput(input io.Reader) error {
 		d.input = append(d.input, scanner.Text())
 	}
 
-	return scanner.Err()
+	if scanner.Err() != nil {
+		return puzzle.InputParseError{Message: scanner.Err().Error()}
+	}
+
+  return nil
 }
