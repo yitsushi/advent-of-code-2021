@@ -25,7 +25,7 @@ func (d *Solver) SetInput(input io.Reader) error {
 	for scanner.Scan() {
 		value, err := strconv.ParseInt(scanner.Text(), base10, intBitSize)
 		if err != nil {
-			return puzzle.InputParseError{Message: scanner.Err().Error()}
+			return puzzle.InputParseError{Message: err.Error()}
 		}
 
 		d.input = append(d.input, value)
