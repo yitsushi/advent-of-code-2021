@@ -62,6 +62,7 @@ issues:
     - exhaustivestruct
     - lll
     - wrapcheck
+    - gomnd
   - source: "// .* #\\d+"
     linters:
     - godox
