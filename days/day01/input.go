@@ -31,9 +31,5 @@ func (d *Solver) SetInput(input io.Reader) error {
 		d.input = append(d.input, value)
 	}
 
-	if scanner.Err() != nil {
-		return puzzle.InputParseError{Message: scanner.Err().Error()}
-	}
-
 	return nil
 }

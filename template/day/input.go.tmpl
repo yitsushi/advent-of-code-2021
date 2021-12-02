@@ -20,9 +20,5 @@ func (d *Solver) SetInput(input io.Reader) error {
 		d.input = append(d.input, scanner.Text())
 	}
 
-	if scanner.Err() != nil {
-		return puzzle.InputParseError{Message: scanner.Err().Error()}
-	}
-
   return nil
 }
