@@ -19,8 +19,8 @@ func (d *Solver) Part1() (string, error) {
 func (d *Solver) Part2() (string, error) {
 	defer perf.Duration(perf.Track("Part2"))
 
-	o2gr := reduceFromGamma(d.input, d.maskLength, d.mask)
-	co2sr := reduceFromEpsilon(d.input, d.maskLength, d.mask)
+	o2gr := reduceFromFunc(gammaFunc, d.input, d.maskLength, d.mask)
+	co2sr := reduceFromFunc(epsilonFunc, d.input, d.maskLength, d.mask)
 
 	return fmt.Sprintf("%d", o2gr*co2sr), nil
 }

@@ -1,10 +1,6 @@
 package day03
 
-func findMostAndLeastCommonBits(
-	list []int64,
-	maskLength int,
-	mask int64,
-) (int64, int64) {
+func findMostAndLeastCommonBits(list []int64, maskLength int, mask int64) (int64, int64) {
 	register := make([]int, maskLength)
 
 	for _, data := range list {
@@ -24,35 +20,27 @@ func findMostAndLeastCommonBits(
 	return mostCommon, ^mostCommon & mask
 }
 
-func reduceFromGamma(list []int64, maskLength int, mask int64) int64 {
+func gammaFunc(list []int64, maskLength int, mask int64) int64 {
 	gammaRate, _ := findMostAndLeastCommonBits(list, maskLength, mask)
-	output := []int64{}
 
-	for _, value := range list {
-		bit := int64(1 << (maskLength - 1))
-		if value&bit == gammaRate&bit {
-			output = append(output, value)
-		}
-	}
-
-	if len(output) == 0 {
-		return 0
-	}
-
-	if len(output) == 1 {
-		return output[0]
-	}
-
-	return reduceFromGamma(output, maskLength-1, mask>>1)
+	return gammaRate
 }
 
-func reduceFromEpsilon(list []int64, maskLength int, mask int64) int64 {
+func epsilonFunc(list []int64, maskLength int, mask int64) int64 {
 	_, epsilonRate := findMostAndLeastCommonBits(list, maskLength, mask)
+
+	return epsilonRate
+}
+
+type reduceBaseFunc func(list []int64, maskLength int, mask int64) int64
+
+func reduceFromFunc(baseFn reduceBaseFunc, list []int64, maskLength int, mask int64) int64 {
+	base := baseFn(list, maskLength, mask)
 	output := []int64{}
+	bit := int64(1 << (maskLength - 1))
 
 	for _, value := range list {
-		bit := int64(1 << (maskLength - 1))
-		if value&bit == epsilonRate&bit {
+		if value&bit == base&bit {
 			output = append(output, value)
 		}
 	}
@@ -65,5 +53,5 @@ func reduceFromEpsilon(list []int64, maskLength int, mask int64) int64 {
 		return output[0]
 	}
 
-	return reduceFromEpsilon(output, maskLength-1, mask>>1)
+	return reduceFromFunc(baseFn, output, maskLength-1, mask>>1)
 }
