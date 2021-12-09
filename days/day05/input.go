@@ -13,6 +13,7 @@ type Solver struct {
 	input []Range
 }
 
+// Range for lines.
 type Range struct {
 	From math.Vector2D
 	To   math.Vector2D
@@ -24,8 +25,8 @@ func (d *Solver) SetInput(input io.Reader) error {
 
 	for scanner.Scan() {
 		line := scanner.Text()
-		from := math.Vector2D{}
-		to := math.Vector2D{}
+		from := math.Vector2D{X: 0, Y: 0}
+		to := math.Vector2D{X: 0, Y: 0}
 
 		fmt.Sscanf(line, "%f,%f -> %f,%f", &from.X, &from.Y, &to.X, &to.Y)
 

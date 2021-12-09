@@ -8,22 +8,23 @@ import (
 )
 
 const (
-	part1Days = 80
-	part2Days = 256
+	part1Days    = 80
+	part2Days    = 256
+	ageGroupSize = 9
 )
 
 // Part1 for this day.
 func (d *Solver) Part1() (string, error) {
 	defer perf.Duration(perf.Track("Part1"))
 
-	ageGroups := make([]int64, 9)
+	ageGroups := make([]int64, ageGroupSize)
 
 	for _, fish := range d.input {
 		ageGroups[fish]++
 	}
 
 	for day := 0; day < part1Days; day++ {
-		newAgeGroups := make([]int64, 9)
+		newAgeGroups := make([]int64, ageGroupSize)
 		gaveBirth := ageGroups[0]
 
 		for idx, value := range ageGroups[1:] {
@@ -43,14 +44,14 @@ func (d *Solver) Part1() (string, error) {
 func (d *Solver) Part2() (string, error) {
 	defer perf.Duration(perf.Track("Part2"))
 
-	ageGroups := make([]int64, 9)
+	ageGroups := make([]int64, ageGroupSize)
 
 	for _, fish := range d.input {
 		ageGroups[fish]++
 	}
 
 	for day := 0; day < part2Days; day++ {
-		newAgeGroups := make([]int64, 9)
+		newAgeGroups := make([]int64, ageGroupSize)
 		gaveBirth := ageGroups[0]
 
 		for idx, value := range ageGroups[1:] {

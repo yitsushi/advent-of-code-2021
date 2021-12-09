@@ -5,6 +5,7 @@ import (
 	"io"
 
 	"github.com/yitsushi/go-aoc/parsing"
+	"github.com/yitsushi/go-aoc/puzzle"
 )
 
 // Solver is the main solver.
@@ -19,12 +20,10 @@ func (d *Solver) SetInput(input io.Reader) error {
 	for scanner.Scan() {
 		result, err := parsing.Int64Slice(scanner.Text(), ",")
 		if err != nil {
-			return err
+			return puzzle.InputParseError{Message: err.Error()}
 		}
 
-		for _, fish := range result {
-			d.input = append(d.input, fish)
-		}
+		d.input = append(d.input, result...)
 	}
 
 	return nil
