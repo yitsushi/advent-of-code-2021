@@ -1,4 +1,4 @@
-package day{{printf "%02d" .Day}}_test
+package day06_test
 
 import (
 	"bytes"
@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"{{.Root}}/days/day{{printf "%02d" .Day}}"
+	"github.com/yitsushi/advent-of-code-2021/days/day06"
 	test "github.com/yitsushi/go-aoc/testing"
 )
 
@@ -18,21 +18,19 @@ func TestSolver_SetInput(t *testing.T) {
 		return
 	}
 
-	day := day{{printf "%02d" .Day}}.Solver{}
+	day := day06.Solver{}
 	err = day.SetInput(ioutil.NopCloser(bytes.NewReader(example)))
 
 	assert.NoError(t, err)
 }
 
 func TestSolver_SetInput_error(t *testing.T) {
-	t.Skip()
-
 	example, err := test.LoadFixture("input-invalid")
 	if !assert.NoError(t, err) {
 		return
 	}
 
-	day := day{{printf "%02d" .Day}}.Solver{}
+	day := day06.Solver{}
 
 	err = day.SetInput(ioutil.NopCloser(bytes.NewReader(example)))
 	assert.Error(t, err)
