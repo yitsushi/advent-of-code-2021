@@ -1,4 +1,4 @@
-package day{{printf "%02d" .Day}}_test
+package day04_test
 
 import (
 	"bytes"
@@ -6,33 +6,41 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"{{.Root}}/days/day{{printf "%02d" .Day}}"
+	"github.com/yitsushi/advent-of-code-2021/days/day04"
 	test "github.com/yitsushi/go-aoc/testing"
 )
 
 func TestSolver_SetInput(t *testing.T) {
-	t.Skip()
-
 	example, err := test.LoadFixture("example")
 	if !assert.NoError(t, err) {
 		return
 	}
 
-	day := day{{printf "%02d" .Day}}.Solver{}
+	day := day04.Solver{}
 	err = day.SetInput(ioutil.NopCloser(bytes.NewReader(example)))
 
 	assert.NoError(t, err)
 }
 
-func TestSolver_SetInput_error(t *testing.T) {
-	t.Skip()
-
+func TestSolver_SetInput_inputError_drawOrder(t *testing.T) {
 	example, err := test.LoadFixture("input-error")
 	if !assert.NoError(t, err) {
 		return
 	}
 
-	day := day{{printf "%02d" .Day}}.Solver{}
+	day := day04.Solver{}
+
+	err = day.SetInput(ioutil.NopCloser(bytes.NewReader(example)))
+	assert.Error(t, err)
+}
+
+func TestSolver_SetInput_inputError_board(t *testing.T) {
+	example, err := test.LoadFixture("input-error-2")
+	if !assert.NoError(t, err) {
+		return
+	}
+
+	day := day04.Solver{}
 
 	err = day.SetInput(ioutil.NopCloser(bytes.NewReader(example)))
 	assert.Error(t, err)
