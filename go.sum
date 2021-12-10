@@ -226,6 +226,8 @@ github.com/stretchr/testify v1.7.0/go.mod h1:6Fq8oRcR53rry900zMqJjRRixrwX3KX962/
 github.com/subosito/gotenv v1.2.0/go.mod h1:N0PQaV/YGNqwC0u51sEeR/aUtSLEXKX9iv69rRypqCw=
 github.com/yitsushi/go-aoc v1.0.3 h1:4I5Rzr7erg86e2dtdZo/E2FVRX/oWP8P/9bdBzO7OJI=
 github.com/yitsushi/go-aoc v1.0.3/go.mod h1:fxDDyISuMBCKLj3Hmp7PktpN545cI1IlKrcVpiC6Q54=
+github.com/yitsushi/go-aoc v1.0.4 h1:wOXMQbO/h5AavN/QtMbDV+h/NzyNy//1LEx5LJi/uw4=
+github.com/yitsushi/go-aoc v1.0.4/go.mod h1:fxDDyISuMBCKLj3Hmp7PktpN545cI1IlKrcVpiC6Q54=
 github.com/yuin/goldmark v1.1.25/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.27/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
 github.com/yuin/goldmark v1.1.32/go.mod h1:3hX8gzYuyVAZsxl0MRgGTJEmQBFcNTphYh9decYSb74=
