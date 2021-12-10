@@ -12,6 +12,7 @@ import (
 	"github.com/yitsushi/advent-of-code-2021/days/day07"
 	"github.com/yitsushi/advent-of-code-2021/days/day08"
 	"github.com/yitsushi/advent-of-code-2021/days/day09"
+	"github.com/yitsushi/advent-of-code-2021/days/day10"
 )
 
 func withDays(month puzzle.Month) puzzle.Month {
@@ -24,6 +25,7 @@ func withDays(month puzzle.Month) puzzle.Month {
 	month.Register(7, &day07.Solver{})
 	month.Register(8, &day08.Solver{})
 	month.Register(9, &day09.Solver{})
+	month.Register(10, &day10.Solver{})
 
 	return month
 }
