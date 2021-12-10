@@ -6,7 +6,7 @@ require (
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/cobra v1.2.1
 	github.com/stretchr/testify v1.7.0
-	github.com/yitsushi/go-aoc v1.0.4
+	github.com/yitsushi/go-aoc v1.0.5
 )
 
 require (
