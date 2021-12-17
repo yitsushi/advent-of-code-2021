@@ -11,13 +11,16 @@ import (
 )
 
 func TestSolver_Part2(t *testing.T) {
-	t.Skip()
-
 	example, err := test.LoadFixture("example")
 	if !assert.NoError(t, err) {
 		return
 	}
 
+	exampleOutput, err := test.LoadFixture("example-output")
+	if !assert.NoError(t, err) {
+		return
+	}
+
 	day := day13.Solver{}
 
 	err = day.SetInput(ioutil.NopCloser(bytes.NewReader(example)))
@@ -28,17 +31,20 @@ func TestSolver_Part2(t *testing.T) {
 	out, err := day.Part2()
 
 	assert.NoError(t, err)
-	assert.Equal(t, "", out)
+	assert.Equal(t, string(exampleOutput), out+"\n")
 }
 
 func TestSolver_Part2_real(t *testing.T) {
-	t.Skip()
-
 	example, err := test.LoadFixture("input")
 	if !assert.NoError(t, err) {
 		return
 	}
 
+	exampleOutput, err := test.LoadFixture("real-output")
+	if !assert.NoError(t, err) {
+		return
+	}
+
 	day := day13.Solver{}
 
 	err = day.SetInput(ioutil.NopCloser(bytes.NewReader(example)))
@@ -49,5 +55,5 @@ func TestSolver_Part2_real(t *testing.T) {
 	out, err := day.Part2()
 
 	assert.NoError(t, err)
-	assert.Equal(t, "", out)
+	assert.Equal(t, string(exampleOutput), out+"\n")
 }
