@@ -43,11 +43,18 @@ func (n *Node) Link(node *Node) {
 	}
 }
 
-func (n Node) Options(chain []*Node) []*Node {
+func (n Node) Options(chain []*Node, haveMoreTime bool) []*Node {
 	options := []*Node{}
 
 	for _, node := range n.connections {
-		if node.IsLarge() || !isOnChain(node, chain) {
+		if node.Name() == "start" {
+			continue
+		}
+
+		onChain := isOnChain(node, chain)
+		canVisitMore := haveMoreTime && !chainHasSmallDuplicates(chain)
+
+		if node.IsLarge() || canVisitMore || !onChain {
 			options = append(options, node)
 		}
 	}
@@ -73,4 +80,22 @@ func chainToString(chain []*Node) string {
 	}
 
 	return strings.Join(items, "->")
+}
+
+func chainHasSmallDuplicates(chain []*Node) bool {
+	visited := map[string]bool{}
+
+	for _, node := range chain {
+		if node.IsLarge() {
+			continue
+		}
+
+		if _, found := visited[node.Name()]; found {
+			return true
+		}
+
+		visited[node.Name()] = true
+	}
+
+	return false
 }

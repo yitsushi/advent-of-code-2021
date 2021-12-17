@@ -4,7 +4,6 @@ import (
 	"fmt"
 
 	"github.com/yitsushi/go-aoc/perf"
-	"github.com/yitsushi/go-aoc/puzzle"
 )
 
 // Part1 for this day.
@@ -20,5 +19,9 @@ func (d *Solver) Part1() (string, error) {
 func (d *Solver) Part2() (string, error) {
 	defer perf.Duration(perf.Track("Part2"))
 
-	return "", puzzle.NotImplementedError{}
+	d.input.DoIHaveMoreFuckingTime(true)
+
+	routes, _, _ := d.input.AllPossibleRoute(nil, []*Node{})
+
+	return fmt.Sprintf("%d", len(routes)), nil
 }

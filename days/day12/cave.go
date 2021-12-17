@@ -3,9 +3,10 @@ package day12
 import "github.com/sirupsen/logrus"
 
 type Map struct {
-	startNode *Node
-	endNode   *Node
-	caves     map[string]*Node
+	startNode    *Node
+	endNode      *Node
+	caves        map[string]*Node
+	haveMoreTime bool
 }
 
 func newMap() Map {
@@ -17,9 +18,14 @@ func newMap() Map {
 			"start": start,
 			"end":   end,
 		},
-		startNode: start,
-		endNode:   end,
+		startNode:    start,
+		endNode:      end,
+		haveMoreTime: false,
 	}
+}
+
+func (m *Map) DoIHaveMoreFuckingTime(answer bool) {
+	m.haveMoreTime = answer
 }
 
 func (m *Map) AddConnection(from, to string) {
@@ -48,7 +54,7 @@ func (m *Map) AllPossibleRoute(node *Node, chain []*Node) ([][]*Node, bool, erro
 
 	routes := [][]*Node{}
 
-	options := node.Options(chain)
+	options := node.Options(chain, m.haveMoreTime)
 	if len(options) == 0 {
 		return routes, false, NoMoreRouteError{NodeName: node.Name()}
 	}
