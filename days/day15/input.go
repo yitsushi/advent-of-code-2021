@@ -18,5 +18,5 @@ func (d *Solver) SetInput(input io.Reader) error {
 		d.input = append(d.input, scanner.Text())
 	}
 
-  return nil
+	return nil
 }

@@ -42,15 +42,15 @@ func minMax(elements map[byte]int) (int, byte, int, byte) {
 		minCh, maxCh byte
 	)
 
-	for ch, count := range elements {
+	for element, count := range elements {
 		if count > max {
 			max = count
-			maxCh = ch
+			maxCh = element
 		}
 
 		if count < min {
 			min = count
-			minCh = ch
+			minCh = element
 		}
 	}
 

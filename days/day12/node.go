@@ -1,9 +1,6 @@
 package day12
 
-import (
-	"strings"
-)
-
+// Node is a cave. I could call it a cave, but I did not want to.
 type Node struct {
 	name        string
 	multi       bool
@@ -13,6 +10,7 @@ type Node struct {
 
 func newNode(name string) *Node {
 	multi := false
+
 	for _, ch := range name {
 		if ch >= 'A' && ch <= 'Z' {
 			multi = true
@@ -29,20 +27,24 @@ func newNode(name string) *Node {
 	}
 }
 
+// Name of the node.
 func (n Node) Name() string {
 	return n.name
 }
 
+// IsLarge is true if it's a large cave.
 func (n Node) IsLarge() bool {
 	return n.multi
 }
 
+// Link another cave with this one.
 func (n *Node) Link(node *Node) {
 	if _, found := n.connections[node.Name()]; !found {
 		n.connections[node.Name()] = node
 	}
 }
 
+// Options is a list of availabel options to move forward in the cave system.
 func (n Node) Options(chain []*Node, haveMoreTime bool) []*Node {
 	options := []*Node{}
 
@@ -70,16 +72,6 @@ func isOnChain(node *Node, chain []*Node) bool {
 	}
 
 	return false
-}
-
-func chainToString(chain []*Node) string {
-	items := []string{}
-
-	for _, node := range chain {
-		items = append(items, node.Name())
-	}
-
-	return strings.Join(items, "->")
 }
 
 func chainHasSmallDuplicates(chain []*Node) bool {

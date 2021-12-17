@@ -2,6 +2,7 @@ package day12
 
 import "github.com/sirupsen/logrus"
 
+// Map is the map of the cave system.
 type Map struct {
 	startNode    *Node
 	endNode      *Node
@@ -24,23 +25,26 @@ func newMap() Map {
 	}
 }
 
+// DoIHaveMoreFuckingTime is basically part2.
 func (m *Map) DoIHaveMoreFuckingTime(answer bool) {
 	m.haveMoreTime = answer
 }
 
-func (m *Map) AddConnection(from, to string) {
-	if _, found := m.caves[from]; !found {
-		m.caves[from] = newNode(from)
+// AddConnection between caves.
+func (m *Map) AddConnection(fromCave, toCave string) {
+	if _, found := m.caves[fromCave]; !found {
+		m.caves[fromCave] = newNode(fromCave)
 	}
 
-	if _, found := m.caves[to]; !found {
-		m.caves[to] = newNode(to)
+	if _, found := m.caves[toCave]; !found {
+		m.caves[toCave] = newNode(toCave)
 	}
 
-	m.caves[from].Link(m.caves[to])
-	m.caves[to].Link(m.caves[from])
+	m.caves[fromCave].Link(m.caves[toCave])
+	m.caves[toCave].Link(m.caves[fromCave])
 }
 
+// AllPossibleRoute generates all possible routes.
 func (m *Map) AllPossibleRoute(node *Node, chain []*Node) ([][]*Node, bool, error) {
 	if node == nil {
 		node = m.startNode

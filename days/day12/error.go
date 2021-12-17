@@ -2,6 +2,7 @@ package day12
 
 import "fmt"
 
+// NoMoreRouteError when we hit a dead end.
 type NoMoreRouteError struct {
 	NodeName string
 }
